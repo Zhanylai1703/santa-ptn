@@ -1,0 +1,35 @@
+{% extends 'components/base.html' %}
+
+{% block body %}
+    <h1 class="display-3 title" style="margin-bottom: 50px;">{{ group.name }}</h1>
+
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <div style="width: 400px;">
+            <div class="row row-margin">
+                <label for="name" class="col-6">Имя: </label>
+                <input class="text-input col-6" type="text" name="name" placeholder="Required" required>
+            </div>
+
+            <div class="row row-margin">
+                <label for="email" class="col-6">Email: </label>
+                <input class="text-input col-6" type="email" name="email" placeholder="Required" required>
+            </div>
+
+            {% for field in fields %}
+                <div class="row row-margin">
+                    <label class="col-6" for="field-{{ field.id }}">{{ field.name }}</label>
+                    <input class="text-input col-6" type="text" name="field-{{ field.id }}"
+                            {{ field.is_required|yesno:'required placeholder=Required,' }}>
+                </div>
+            {% endfor %}
+
+            <div>
+                <button class="btn btn-info" style="margin: auto;">Отправить</button>
+            </div>
+        </div>
+
+    </form>
+
+{% endblock %}

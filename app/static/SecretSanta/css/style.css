@@ -1,0 +1,42 @@
+.body {
+    width: 90%;
+    margin: auto;
+}
+
+.helptext {
+    display: none;
+}
+
+.navbar {
+    margin-bottom: 10px;
+}
+
+.group-desc-body {
+    margin-top: 30px;
+}
+
+.card {
+    margin: 15px;
+    width: 270px;
+}
+
+.title {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.new-button {
+    margin: 30px 15px 0 0;
+    font-size: 2em;
+}
+
+.text-input {
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px rgb(167, 18, 18) solid;
+    box-shadow: 1px 1px 1px rgb(175, 132, 132) inset;
+}
+
+.row-margin {
+    margin: 15px;
+}

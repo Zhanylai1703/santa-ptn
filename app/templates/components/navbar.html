@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <a class="navbar-brand" href="{% url 'app:index' %}">Тайный санта.</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        {% if user.is_authenticated %}
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'app:index' %}">Группы</a>
+                </li>
+                <li class="nav-item">
+
+                </li>
+            </ul>
+        {% endif %}
+
+        <a class="nav-link navbar-dark bg-dark" href="{% url 'app:logout' %}">Выйти</a>
+
+    </div>
+</nav>

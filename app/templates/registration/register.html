@@ -1,0 +1,14 @@
+{% extends 'components/base.html' %}
+
+{% block body %}
+
+    <h1>Регистрация</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form }}
+        </table>
+        <button>Регистрация</button>
+    </form>
+
+{% endblock %}

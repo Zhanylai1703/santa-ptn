@@ -1,0 +1,23 @@
+{% extends 'components/base.html' %}
+
+{% block body %}
+
+    <h1 class="display-3 title">Группы</h1>
+    <a class="btn btn-info float-right new-button" href="{% url 'app:new' 'group' %}">Создать игру</a>
+
+    <div>
+        {% for group in groups %}
+            <div class="card float-left">
+                <div class="card-body">
+                    <h5 class="card-title">{{ group.name }}</h5>
+                    <div style="margin-top: 20px;">
+                        <a class="btn btn-primary" href="{% url 'app:group_detail' group.id %}">ПОДРОБНО</a>
+                        <a class="btn btn-danger" href="{% url 'app:delete' 'group' group.id group.id %}">УДАЛИТЬ</a>
+                        <a class="btn btn-secondary" href="{% url 'app:edit' 'group' group.id %}">ИЗМЕНТЬ</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

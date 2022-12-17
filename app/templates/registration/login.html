@@ -1,0 +1,16 @@
+{% extends 'components/base.html' %}
+
+{% block body %}
+
+    <h1>Login</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form }}
+        </table>
+        <button>вход</button>
+    </form>
+
+    <a href="{% url 'app:register' %}">Регистрация</a>
+
+{% endblock %}

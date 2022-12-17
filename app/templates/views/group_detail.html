@@ -1,0 +1,50 @@
+{% extends 'components/base.html' %}
+
+{% block body %}
+    <h1 class="display-3 title">{{ group.name }}</h1>
+    <a class="btn btn-success float-right new-button" href="{% url 'app:form' group.id %}">Перейти к форме</a>
+
+    <div class="row group-desc-body">
+        <div class="col-6">
+            <h3 class="display-4">Поля формы</h3>
+            <p style="margin-top: 25px;">Имя</p>
+            <p style="margin-top: 25px;">Email</p>
+
+            <div style="width: 65%;">
+                {% for field in fields %}
+                <div class="row" style="margin-top: 25px;">
+                    <span class="col-8">{{ field.name }}</span>
+
+                    <div class="col-4">
+                        <a class="btn btn-danger" href="{% url 'app:delete' 'field' group.id field.id %}">Удалить</a>
+                        <a class="btn btn-secondary" href="{% url 'app:edit' 'field' field.id %}">Редактировать</a>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+
+            <a style="margin-top: 25px;" class="btn btn-info" href="{% url 'app:new' 'field' %}?group={{ group.id }}">Создать новое поле</a>
+        </div>
+
+        <div class="col-6">
+            <h3 class="display-4">Заявки</h3>
+            {% if simple_users.count == 0 %}
+                <p>Заявок пока нет.</p>
+            {% endif %}
+
+            <div style="width: 65%;">
+                {% for simple_user in simple_users %}
+                    <div style="width: 100%; margin-top: 25px;" class="row">
+                        <div class="col-8">{{ simple_user.name }} - {{ simple_user.email }}</div>
+                        <div class="col-1"></div>-
+                        <a class="btn btn-danger col-3" style=" height:40px;"
+                           href="{% url 'app:delete' 'simpleuser' group.id simple_user.id %}">удалить</a>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <a style="margin-top: 15px; font-size:1.5em;" class="btn btn-info" href="{% url 'app:finish' group.id %}">Закончить</a>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'components/base.html' %}
+
+{% block body %}
+    <!--
+        Layout:
+          - ability to create new group
+     -->
+    <h1 class="display-3 title" style="margin-bottom: 50px;">{{ model_object|yesno:'Edit,New' }} {{ object|title }}</h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        {% if object == 'field' %}
+            <input type="hidden" name="group_id" value={{ group.id }}>
+        {% endif %}
+
+        <input type="hidden" name="owner_id" value={{ user.id }}>
+
+        <label for="name">Имя: </label>
+        <input class="text-input" type="text" value="{{ model_object.name }}" name="name" placeholder="{{ object|title }} Name">
+
+
+        {% if object == 'field' %}
+            <br>
+            <label for="is_required">Обязательно</label>
+            <input type="checkbox" name="is_required" checked="{{ model_object.is_required|yesno:'checked,' }}">
+        {% endif %}
+        <br>
+        <button class="btn btn-info">Сохранить</button>
+    </form>
+
+{% endblock %}
